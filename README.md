@@ -32,6 +32,7 @@
 - `reddit-gunpla-researcher/tests/validate_skill.ps1`：本地结构验证脚本，检查 skill 是否包含关键章节和安全边界。
 - `dist/reddit-gunpla-researcher.skill`：可分发的 skill 包。
 - `docs/superpowers/specs/2026-04-30-reddit-gunpla-researcher-design.md`：设计记录。
+- `docs/examples/reddit-gunpla-researcher-full-case.md`：完整使用案例，演示从公开评论破冰到概念测试和调研记录的全过程。
 
 ## 使用方式
 
