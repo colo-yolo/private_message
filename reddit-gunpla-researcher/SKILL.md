@@ -1,6 +1,6 @@
 ---
 name: reddit-gunpla-researcher
-description: Use when planning or drafting Reddit user research for Gunpla display posts, comment maintenance, collector cabinets, lighting, dust care, scene backdrops, concept testing, interviews, buying-intent probes, or outreach messages.
+description: This skill should be used when the user asks to plan Gunpla Reddit display-post research, maintain a Reddit comment section, follow up after public Reddit exchanges, run comment retrospectives, run DM retrospectives, probe collector cabinet concepts, or review buying-intent signals around lighting, dust care, backdrops, or display workflows. It should also be used when the user says "评论复盘", "私信复盘", "复盘评论区", or "整理 DM 记录".
 ---
 
 # Reddit Gunpla Researcher
@@ -11,6 +11,9 @@ Help a researcher run low-pressure Reddit research around a Gunpla display cabin
 This skill starts with a hard image-search gate. Here, "external" means non-China public internet results that a North America-based user would commonly encounter. The priority is not generic search first. Search productized and marketplace risk first: Etsy, eBay, Shopify product pages, independent storefronts, commission-build shops, and finished display-case or diorama seller sites such as TakaraModel. Then check legacy hobby blogs, expo coverage, repost-heavy fan news sites, and archive-style image posts such as Blogspot, Wordpress hobby blogs, Gundam event coverage pages, and long-running fan media sites. After that, check image-spread platforms such as Pinterest, Instagram, Reddit, YouTube, X, Facebook, or TikTok. Prefer Google image search or Google Lens for image reverse search when the environment supports it, and use Google, Google Images, and Bing as broad catch-all layers after that. If the exact same base image is already public in that non-China search environment, the post must be blocked. Similar scenes, similar product categories, or close visual themes do not block the post by themselves. If the exact same base image is not found there, the skill proceeds in a natural first-person hobbyist voice, plans a bilingual display post, helps maintain comments after the post starts to ferment, and surfaces consent-based DM candidates after 1-2 public exchanges.
 
 The target product area is a premium display cabinet for Gundam/Gunpla collectors, with dynamic scene backgrounds, model care support, and lighting that can link with the displayed scene.
+
+## Additional Resources
+Consult `references/retrospective.md` when the task is comment retrospective, DM retrospective, user-record consolidation, or any request that needs structured output for a user master table and communication log table.
 
 ## Non-Negotiable Guardrails
 Use these boundaries before writing any Reddit content:
@@ -50,20 +53,28 @@ Useful inputs:
 | Field | What to ask for |
 |---|---|
 | Images | Several Gunpla display images for the non-China public-internet image-search gate |
-| Task type | Display-post planning, live comment maintenance, DM follow-up, concept test, deep interview, or close |
+| Task type | Display-post planning, live comment maintenance, DM follow-up, comment retrospective, DM retrospective, concept test, deep interview, or close |
 | Public context | The target subreddit, live post link, public comments, and any prior replies in this conversation |
 | Research direction | Lighting, display cabinet, backdrop, dust/UV, layout, collector habit, or no preference |
 | Selected angle | The post angle the user wants after reviewing 3-5 options |
 | Constraints | No DMs yet, short reply, casual tone, moderator-safe wording, avoid product detail, or weak-hook only |
+
+For retrospective tasks, do not proceed with a vague summary first. Ask for the evidence needed to identify the user and reconstruct the interaction:
+
+- Comment retrospective: ask for the post link and comment screenshots. Prefer screenshots that clearly show the username, the user's comment, and the team's reply.
+- DM retrospective: ask for the origin post link that first surfaced the user plus the DM screenshots. Prefer screenshots that clearly show the username, the user's message, and the team's reply.
+- If the screenshots do not clearly identify the user, say that the record can only be drafted as provisional and mark uncertain fields as `待判断` or `待分配`.
 
 If the user asks in Chinese, answer the strategy in Chinese and present ready-to-send Reddit content in bilingual English and Chinese unless the user asks otherwise.
 
 ## Workflow
 Follow this sequence for every request:
 
-1. Classify the task: display-post planning, comment maintenance, DM follow-up, concept test, deep interview, or close.
-2. If the task is a display post, require several user-provided images before doing anything else.
-3. Run an external image search or reverse image search focused on non-China public internet results.
+1. Classify the task: display-post planning, comment maintenance, DM follow-up, comment retrospective, DM retrospective, concept test, deep interview, or close.
+2. If the task is comment retrospective, ask for the post link plus comment screenshots before generating any table output. Then extract the username, user content, team reply, sentiment, and interaction value. Output the user master record first and the communication log second. Use `references/retrospective.md` for field mapping and value standards.
+3. If the task is DM retrospective, ask for the origin post link plus DM screenshots before generating any table output. Then extract the username, communication type, user content, team reply, sentiment, and interaction value. Output the user master record first and the communication log second. Use `references/retrospective.md` for field mapping and value standards.
+4. If the task is a display post, require several user-provided images before doing anything else.
+5. Run an external image search or reverse image search focused on non-China public internet results.
    Search in this order:
    a. Marketplace and storefront risk: Etsy, eBay, Shopify product pages, independent model shops, commission-build stores, and finished display-case or diorama seller sites such as TakaraModel.
       For TakaraModel- and Etsy-style priority sites, this is mandatory: do a site-specific product-page keyword check plus manual product-image comparison. Combine:
@@ -75,13 +86,13 @@ Follow this sequence for every request:
    c. Image-spread platforms: Pinterest, Instagram, Reddit, YouTube, X, Facebook, TikTok.
    d. Broad discovery layers: Google, Google Images, Bing. Prefer Google image search or Google Lens here when supported.
    If the exact same base image is found in any of those non-China layers, strong-intercept the task and stop. If the result is unclear, pause and ask for better images. Only continue after a clear no-match result. Do not block based only on similar scenes. If Google image search or Google Lens could not be directly executed in the current environment, explicitly mark the result as manual review instead of a high-confidence pass, unless the user explicitly states that they already ran Google image search or Google Lens and got no result.
-4. If the user explicitly says they already ran Google image search or Google Lens and found no result, go directly into the post-editing stage. Otherwise, once the images clear the gate, ask which direction the user wants to probe: lighting, display cabinet, backdrop, dust/UV, layout, or collector habit. If the user has no idea, infer the best directions from the images.
-5. Generate 3-5 weak-hook display-post angles that feel like natural Reddit discussion starters rather than explicit research prompts.
-6. Build the final bilingual package: subreddit, flair, image order, title, body, and first comment.
-7. After the post goes live, wait until roughly 30 minutes have passed or several natural comments appear, then start comment maintenance.
-8. In comment maintenance, reply to short comments first to raise activity, then answer long comments more thoughtfully to create a valuable sharing-heavy thread.
-9. Only suggest DM follow-up after 1-2 public exchanges and only for high-value users who clearly want to share experience, setups, or constraints.
-10. Update or create research notes after every meaningful interaction.
+6. If the user explicitly says they already ran Google image search or Google Lens and found no result, go directly into the post-editing stage. Otherwise, once the images clear the gate, ask which direction the user wants to probe: lighting, display cabinet, backdrop, dust/UV, layout, or collector habit. If the user has no idea, infer the best directions from the images.
+7. Generate 3-5 weak-hook display-post angles that feel like natural Reddit discussion starters rather than explicit research prompts.
+8. Build the final bilingual package: subreddit, flair, image order, title, body, and first comment.
+9. After the post goes live, wait until roughly 30 minutes have passed or several natural comments appear, then start comment maintenance.
+10. In comment maintenance, reply to short comments first to raise activity, then answer long comments more thoughtfully to create a valuable sharing-heavy thread.
+11. Only suggest DM follow-up after 1-2 public exchanges and only for high-value users who clearly want to share experience, setups, or constraints.
+12. Update or create research notes after every meaningful interaction.
 
 ## Conversation Stages
 
@@ -93,6 +104,8 @@ Follow this sequence for every request:
 | Early comment warming | Lift comment count and keep the post alive | No hard research language | Reply to short praise and light aesthetic comments first |
 | Deep public reply | Grow the most useful comment branches | Light probing is fine | Answer technical or thoughtful comments with one concrete follow-up |
 | DM bridge | Move to private chat after public rapport | Clear disclosure and consent are required | Ask whether they are open to continuing after 1-2 public exchanges |
+| Comment retrospective | Turn a specific commenter into structured CRM-style notes | Evidence first | Ask for the post link plus screenshots, identify the user from the screenshots, then output user master record first and communication log second |
+| DM retrospective | Turn a DM thread into structured CRM-style notes | Evidence first | Ask for the origin post link plus DM screenshots, identify the user from the screenshots, then output user master record first and communication log second |
 | Close | Preserve trust and leave room for tomorrow | Low pressure | Thank them, let the thread breathe, and remind the human to check again the next day |
 
 ### Image Gate Pattern
@@ -214,6 +227,13 @@ Research notes:
 ```
 
 If the task is only a comment reply or only a live-thread review, skip the irrelevant post fields but keep the bilingual output structure.
+
+If the task is comment retrospective or DM retrospective, do not use the display-post package above. Use the retrospective templates and field rules in `references/retrospective.md`. Always output in this order:
+
+1. Missing input check
+2. User master record
+3. Communication records
+4. Summary and next-step suggestion
 
 ## Tone And Style
 Sound like a real hobbyist with good research manners:
@@ -400,6 +420,8 @@ Use this compact schema after every meaningful interaction:
 ```
 
 Do not store usernames, private details, real names, addresses, or unrelated personal history unless the human has a legitimate research reason and consent.
+
+For retrospective tasks that explicitly ask for user records, it is acceptable to store the Reddit username or DM-visible handle because the point of the task is to map a specific interaction back into the user master table and communication log table. Still avoid unrelated private details.
 
 ## Refusal And Rewrite Rules
 If the user asks for unsafe outreach or tries to post an image that fails the image-search gate, do three things:
