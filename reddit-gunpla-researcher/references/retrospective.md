@@ -2,6 +2,11 @@
 
 Use this reference when the user asks for comment retrospective, DM retrospective, comment-log cleanup, user-record consolidation, or any request that turns screenshots into table-ready user records.
 
+Treat the target output as two concrete tables, not a loose narrative:
+
+- `用户主表`
+- `沟通记录表`
+
 Always keep the order:
 
 1. Confirm the retrospective type.
@@ -9,7 +14,7 @@ Always keep the order:
 3. Identify the user from screenshots first, not from the post link alone.
 4. Draft the user master record.
 5. Draft the communication records.
-6. End with a short value judgment and next step.
+6. End with a short value judgment and next step only after both tables are complete.
 
 The post link is used to anchor the source context and the origin thread. It is not enough by itself to identify a user unless the user is also visible in the screenshot or clearly named by the human.
 
@@ -31,6 +36,8 @@ Map them as follows:
 - Comment retrospective: public-thread screenshots plus a post link.
 - DM retrospective: DM screenshots plus the origin post link that first surfaced the user.
 
+The default expectation is not "write a retrospective paragraph." The default expectation is "fill the user master table first, then fill the communication log table."
+
 ## Required Inputs
 
 ### Comment Retrospective
@@ -46,6 +53,8 @@ Prefer screenshots that clearly show:
 - User comment
 - Team reply
 - Enough surrounding context to tell whether the interaction was useful
+
+Remind the human that the post link is used to anchor the `来源帖子链接` field, while the screenshots are used to locate the specific user and reconstruct the exchange.
 
 If the screenshot does not show the username clearly, say:
 
@@ -67,6 +76,8 @@ Prefer screenshots that clearly show:
 - Team replies
 - Message order
 
+Remind the human that the origin post link is used to anchor where the user first came from, while the DM screenshots are used to reconstruct the user record and the communication log.
+
 If the screenshots show only part of the exchange, mark uncertain fields as `待判断`.
 
 ## Extraction Rules
@@ -85,9 +96,9 @@ If a field is not directly supported, use a conservative placeholder:
 - `待判断` for uncertain classification fields
 - `缺失` for a missing post link or missing source field
 
-## User Master Table
+## 用户主表
 
-Use this table structure:
+Use this exact structure:
 
 - 用户ID
 - 用户名
@@ -200,11 +211,11 @@ Use this for short synthesis only:
 - notable constraints
 - promising follow-up angle
 
-## Communication Log Table
+## 沟通记录表
 
 ### Comment Retrospective Record
 
-Use this structure:
+For comment retrospective, use this exact structure:
 
 - 用户ID
 - 用户内容
@@ -223,7 +234,7 @@ Use:
 
 ### DM Retrospective Record
 
-Use this structure:
+For DM retrospective, use this exact structure:
 
 - 用户主表ID
 - 用户名
@@ -271,7 +282,7 @@ Missing input check:
 - Screenshot status:
 - Record confidence:
 
-User master record:
+用户主表:
 - 用户ID:
 - 用户名:
 - 首次接触时间:
@@ -283,7 +294,7 @@ User master record:
 - 是否转化:
 - 备注:
 
-Communication records:
+沟通记录表:
 1.
 - [...]
 
@@ -293,7 +304,8 @@ Summary:
 - 下一步建议:
 ```
 
-Always place the user master record before the communication records.
+Always place `用户主表` before `沟通记录表`.
+Do not invert that order.
 
 ## Comment Retrospective Workflow
 
@@ -303,8 +315,8 @@ Follow this sequence:
 2. Identify the user from the screenshots.
 3. Extract the user content and the team's reply.
 4. Infer sentiment conservatively from wording and reaction.
-5. Draft the user master record.
-6. Draft one or more communication records.
+5. Draft the `用户主表`.
+6. Draft one or more `沟通记录表` rows using the comment-retrospective structure.
 7. End with a short recommendation:
    - keep warming in public
    - move toward a share-invite
@@ -319,8 +331,8 @@ Follow this sequence:
 2. Identify the user from the screenshots.
 3. Break the DM into meaningful turns.
 4. Label each turn with a communication type.
-5. Draft the user master record.
-6. Draft one or more communication records.
+5. Draft the `用户主表`.
+6. Draft one or more `沟通记录表` rows using the DM-retrospective structure.
 7. End with a short recommendation:
    - continue product discussion
    - validate pain point depth
@@ -331,8 +343,10 @@ Follow this sequence:
 ## Quality Rules
 
 - Do not write a generic retrospective paragraph and forget the tables.
-- Do not output communication records before the user master record.
+- Do not output `沟通记录表` before `用户主表`.
 - Do not infer a specific pain point from a vague compliment alone.
 - Do not mark a user as `高价值` or `高意向用户` without evidence of real need or repeated engagement.
 - Do not treat a post link as proof of user identity without screenshot support.
 - If the user asks for a retrospective but provides no screenshots, explicitly request them before proceeding.
+- For comment retrospective, prefer one `沟通记录表` row per meaningful public exchange.
+- For DM retrospective, prefer one `沟通记录表` row per meaningful DM turn or stage rather than one row for the entire conversation.

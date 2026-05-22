@@ -13,7 +13,7 @@ This skill starts with a hard image-search gate. Here, "external" means non-Chin
 The target product area is a premium display cabinet for Gundam/Gunpla collectors, with dynamic scene backgrounds, model care support, and lighting that can link with the displayed scene.
 
 ## Additional Resources
-Consult `references/retrospective.md` when the task is comment retrospective, DM retrospective, user-record consolidation, or any request that needs structured output for a user master table and communication log table.
+Consult `references/retrospective.md` when the task is comment retrospective, DM retrospective, user-record consolidation, or any request that needs structured output for `用户主表` and `沟通记录表`.
 
 ## Non-Negotiable Guardrails
 Use these boundaries before writing any Reddit content:
@@ -64,6 +64,7 @@ For retrospective tasks, do not proceed with a vague summary first. Ask for the 
 - Comment retrospective: ask for the post link and comment screenshots. Prefer screenshots that clearly show the username, the user's comment, and the team's reply.
 - DM retrospective: ask for the origin post link that first surfaced the user plus the DM screenshots. Prefer screenshots that clearly show the username, the user's message, and the team's reply.
 - If the screenshots do not clearly identify the user, say that the record can only be drafted as provisional and mark uncertain fields as `待判断` or `待分配`.
+For both retrospective tasks, explicitly tell the user that the output will be written into `用户主表` first and `沟通记录表` second.
 
 If the user asks in Chinese, answer the strategy in Chinese and present ready-to-send Reddit content in bilingual English and Chinese unless the user asks otherwise.
 
@@ -71,8 +72,8 @@ If the user asks in Chinese, answer the strategy in Chinese and present ready-to
 Follow this sequence for every request:
 
 1. Classify the task: display-post planning, comment maintenance, DM follow-up, comment retrospective, DM retrospective, concept test, deep interview, or close.
-2. If the task is comment retrospective, ask for the post link plus comment screenshots before generating any table output. Then extract the username, user content, team reply, sentiment, and interaction value. Output the user master record first and the communication log second. Use `references/retrospective.md` for field mapping and value standards.
-3. If the task is DM retrospective, ask for the origin post link plus DM screenshots before generating any table output. Then extract the username, communication type, user content, team reply, sentiment, and interaction value. Output the user master record first and the communication log second. Use `references/retrospective.md` for field mapping and value standards.
+2. If the task is comment retrospective, ask for the post link plus comment screenshots before generating any table output. Then extract the username, user content, team reply, sentiment, and interaction value. Output `用户主表` first and `沟通记录表` second. Use `references/retrospective.md` for field mapping and value standards.
+3. If the task is DM retrospective, ask for the origin post link plus DM screenshots before generating any table output. Then extract the username, communication type, user content, team reply, sentiment, and interaction value. Output `用户主表` first and `沟通记录表` second. Use `references/retrospective.md` for field mapping and value standards.
 4. If the task is a display post, require several user-provided images before doing anything else.
 5. Run an external image search or reverse image search focused on non-China public internet results.
    Search in this order:
@@ -104,8 +105,8 @@ Follow this sequence for every request:
 | Early comment warming | Lift comment count and keep the post alive | No hard research language | Reply to short praise and light aesthetic comments first |
 | Deep public reply | Grow the most useful comment branches | Light probing is fine | Answer technical or thoughtful comments with one concrete follow-up |
 | DM bridge | Move to private chat after public rapport | Clear disclosure and consent are required | Ask whether they are open to continuing after 1-2 public exchanges |
-| Comment retrospective | Turn a specific commenter into structured CRM-style notes | Evidence first | Ask for the post link plus screenshots, identify the user from the screenshots, then output user master record first and communication log second |
-| DM retrospective | Turn a DM thread into structured CRM-style notes | Evidence first | Ask for the origin post link plus DM screenshots, identify the user from the screenshots, then output user master record first and communication log second |
+| Comment retrospective | Turn a specific commenter into `用户主表` plus `沟通记录表` output | Evidence first | Ask for the post link plus screenshots, identify the user from the screenshots, then output `用户主表` first and `沟通记录表` second |
+| DM retrospective | Turn a DM thread into `用户主表` plus `沟通记录表` output | Evidence first | Ask for the origin post link plus DM screenshots, identify the user from the screenshots, then output `用户主表` first and `沟通记录表` second |
 | Close | Preserve trust and leave room for tomorrow | Low pressure | Thank them, let the thread breathe, and remind the human to check again the next day |
 
 ### Image Gate Pattern
@@ -231,8 +232,8 @@ If the task is only a comment reply or only a live-thread review, skip the irrel
 If the task is comment retrospective or DM retrospective, do not use the display-post package above. Use the retrospective templates and field rules in `references/retrospective.md`. Always output in this order:
 
 1. Missing input check
-2. User master record
-3. Communication records
+2. 用户主表
+3. 沟通记录表
 4. Summary and next-step suggestion
 
 ## Tone And Style
